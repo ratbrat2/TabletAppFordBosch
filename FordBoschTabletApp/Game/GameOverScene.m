@@ -9,8 +9,17 @@
 #import "GameOverScene.h"
 #import "MyScene.h"
 
+@interface GameOverScene()
+@property (nonatomic, assign) NSUInteger score;
+@end
+
 @implementation GameOverScene
 
+- (id)initWithSize:(CGSize)size score:(NSUInteger)score
+{
+    self.score = score;
+    return [self initWithSize:size];
+}
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
@@ -28,8 +37,17 @@
         node.fontColor = [SKColor whiteColor];
         node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
         [self addChild:node];
-        node.text = @"Tap to replay";
+        node.text = [NSString stringWithFormat:@"Your score: %d", self.score];
         node.fontSize = 24;
+        
+        SKLabelNode *replayNode = [[SKLabelNode alloc] initWithFontNamed:@"Avenir-Light"];
+        replayNode.position = CGPointMake(0, -100);
+        replayNode.fontColor = [SKColor whiteColor];
+        replayNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        [self addChild:replayNode];
+        replayNode.text = @"Tap to replay";
+        replayNode.fontSize = 24;
+        //Tap to replay
     }
     return self;
 }

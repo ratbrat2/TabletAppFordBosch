@@ -47,7 +47,7 @@
     return colors[(int)arc4random() % [colors count]];
 }
 
-#define SHRINK_FACTOR 0.99
+#define SHRINK_FACTOR 0.97
 
 - (void)update
 {

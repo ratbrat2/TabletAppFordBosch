@@ -135,13 +135,19 @@ withFilterContext:(id)filterContext
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     // Use Regex to see if situational or takeover
-    NSString *pattern = @"^(\\d+):(.*):\\d+$";
+    NSString *pattern = @"^(\\d+):(.*):.*$";
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:pattern
                                   options:NSRegularExpressionCaseInsensitive
                                   error:nil];
     NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:dataString options:0 range:NSMakeRange(0, dataString.length)];
+    
+    // Non-matching string found!
+    if (!textCheckingResult) {
+        NSLog(@"WARNING: Unexpected UDP string: %@", dataString);
+        return;
+    }
     
     NSRange matchIndexRange = [textCheckingResult rangeAtIndex:1];
     NSRange matchMessageRange = [textCheckingResult rangeAtIndex:2];

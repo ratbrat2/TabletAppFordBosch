@@ -24,6 +24,7 @@
 @property (nonatomic, strong) SKLabelNode *scoreNode;
 @property (nonatomic, assign) CFTimeInterval initialTime;
 @property (nonatomic, assign) NSUInteger livesCount;
+@property (nonatomic, strong) SKLabelNode *livesCountNode;
 @property (nonatomic, strong) AVPlayer *bgVideoPlayer;
 
 @end
@@ -32,6 +33,7 @@
 
 #define SCORE_LABEL_OFFSET_X 10
 #define SCORE_LABEL_OFFSET_Y 10
+#define LIVES_LABEL_OFFSET_Y 40
 
 - (SKLabelNode *)scoreNode
 {
@@ -46,6 +48,19 @@
     return _scoreNode;
 }
 
+- (SKLabelNode *)livesCountNode
+{
+    if (!_livesCountNode) {
+        _livesCountNode = [[SKLabelNode alloc] initWithFontNamed:@"Avenir-Light"];
+        _livesCountNode.position = CGPointMake(-self.size.width/2 + SCORE_LABEL_OFFSET_X,-self.size.height/2 + LIVES_LABEL_OFFSET_Y);
+        _livesCountNode.fontColor = [SKColor whiteColor];
+        _livesCountNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        _livesCountNode.fontSize = 24;
+        [self addChild:_livesCountNode];
+    }
+    return _livesCountNode;
+}
+
 - (void)didChangeSize:(CGSize)oldSize
 {
     _scoreNode.position = CGPointMake(-self.size.width/2 + SCORE_LABEL_OFFSET_X,-self.size.height/2 + SCORE_LABEL_OFFSET_Y);
@@ -55,6 +70,12 @@
 {
     _score = score;
     self.scoreNode.text = [NSString stringWithFormat:@"Score %lu", (unsigned long)score];
+}
+
+- (void)setLivesCount:(NSUInteger)livesCount
+{
+    _livesCount = livesCount;
+    self.livesCountNode.text = [NSString stringWithFormat:@"Lives Left: %lu", (unsigned long)livesCount];
 }
 
 - (NSMutableArray *)enemies
@@ -113,7 +134,7 @@
 {
     SKTransition *transition = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
     transition.pausesOutgoingScene = YES;
-    GameOverScene *goScene = [[GameOverScene alloc] initWithSize:self.size];
+    GameOverScene *goScene = [[GameOverScene alloc] initWithSize:self.size score:self.score];
     [self.scene.view presentScene:goScene
                        transition:transition];
 }
