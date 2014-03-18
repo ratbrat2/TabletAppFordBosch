@@ -25,7 +25,7 @@
 {
     if (!_player) {
         // Make sure movie is in root path to this app (e.g. /TabletAppFordBosch/<movie>)
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Its.Always.Sunny.s09e10" ofType:@"mp4"];
+        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Awesometown - FOX Cut" ofType:@"mp4"];
         NSURL *movieURL = [NSURL fileURLWithPath:stringPath];
         _player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
         _player.controlStyle = MPMovieControlStyleNone;

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableDictionary *storedMessages;
 @property (nonatomic) NSUInteger lastSituationalAwarenessIndex;
 @property (nonatomic) NSUInteger lastTakeoverIndex;
+@property (nonatomic) BOOL firstMessageReceived;
 
 @end
 
@@ -63,6 +64,7 @@
     
     self.lastTakeoverIndex = 0;
     self.lastSituationalAwarenessIndex = 0;
+    self.firstMessageReceived = NO;
 
     return YES;
 }
@@ -162,12 +164,19 @@ withFilterContext:(id)filterContext
             // Also cleanup counters
             self.lastSituationalAwarenessIndex = 0;
             self.lastTakeoverIndex = 0;
+            self.firstMessageReceived = NO;
 
         } else {
             // Only update if monotonically increasing
             if ([matchIndex integerValue] > self.lastSituationalAwarenessIndex) {
-            //if ([matchIndex integerValue] > 0) {
                 self.lastSituationalAwarenessIndex = [matchIndex integerValue];
+
+                if (!self.firstMessageReceived) {
+                    // If first message hasn't been received (starting logic), update index to first received UDP but don't display message
+                    self.firstMessageReceived = YES;
+                    return;
+                }
+
                 [self.storedMessages setValue:matchMessage forKey:matchIndex];
             
                 if (self.containerView && self.situationalAwarenessLabel) {
@@ -207,6 +216,13 @@ withFilterContext:(id)filterContext
         // Only update if monotonically increasing
         if ([matchIndex integerValue] > self.lastTakeoverIndex) {
             self.lastTakeoverIndex = [matchIndex integerValue];
+            
+            if (!self.firstMessageReceived) {
+                // If first message hasn't been received (starting logic), update index to first received UDP but don't display message
+                self.firstMessageReceived = YES;
+                return;
+            }
+
             [self.storedMessages setValue:matchMessage forKey:matchIndex];
         
             CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];

@@ -10,6 +10,7 @@
 		02476304182F7564004F020A /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02476303182F7564004F020A /* VideoViewController.m */; };
 		026FB3D6183B557800DB6425 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026FB3D5183B557800DB6425 /* ReadingViewController.m */; };
 		026FB3D8183B633D00DB6425 /* peterpan.utf-8.txt in Resources */ = {isa = PBXBuildFile; fileRef = 026FB3D7183B633D00DB6425 /* peterpan.utf-8.txt */; };
+		029F30F918CE942100079EC5 /* Awesometown - FOX Cut.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */; };
 		02DF32C81857BA0C00A87CFB /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF32C71857BA0C00A87CFB /* QuestionsViewController.m */; };
 		02EFCE3818BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 02EFCE3718BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 */; };
 		5C09A7E01857BA560025275F /* black_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5C09A7D01857BA560025275F /* black_bg.mp4 */; };
@@ -58,6 +59,7 @@
 		026FB3D4183B557800DB6425 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
 		026FB3D5183B557800DB6425 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
 		026FB3D7183B633D00DB6425 /* peterpan.utf-8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "peterpan.utf-8.txt"; sourceTree = "<group>"; };
+		029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Awesometown - FOX Cut.mp4"; sourceTree = "<group>"; };
 		02DF32C51857188B00A87CFB /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		02DF32C61857BA0C00A87CFB /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		02DF32C71857BA0C00A87CFB /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		02476301182F7462004F020A /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */,
 				02EFCE3718BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 */,
 			);
 			name = Videos;
@@ -350,6 +353,7 @@
 				5CA284E21819C78A00E1A029 /* Images.xcassets in Resources */,
 				02EFCE3818BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 in Resources */,
 				5C09A7E81857BA560025275F /* spark.png in Resources */,
+				029F30F918CE942100079EC5 /* Awesometown - FOX Cut.mp4 in Resources */,
 				5CA284D41819C78A00E1A029 /* InfoPlist.strings in Resources */,
 				5C09A7E71857BA560025275F /* PlanetEdgeParticle.sks in Resources */,
 				5CA284DD1819C78A00E1A029 /* Main.storyboard in Resources */,
