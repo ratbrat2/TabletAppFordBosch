@@ -19,7 +19,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // When user first enters a view, disable back button until at least 7 minutes
+    if (self.navigationItem) {
+        self.navigationItem.hidesBackButton = YES;
+        [NSTimer scheduledTimerWithTimeInterval:420.0f
+                                         target:self
+                                       selector:@selector(reEnableBackButton:)
+                                       userInfo:nil
+                                        repeats:NO];
+    }
 }
+
+- (void)reEnableBackButton:(NSTimer *)timer
+{
+    if (self.navigationItem) {
+        if (![self.title isEqual: @"Main"]) {
+            self.navigationItem.hidesBackButton = NO;
+        }
+    }
+}
+
 
 // Debug buttons to send takeover or awareness messages via UDP
 // Situational awareness message: '1x:message'

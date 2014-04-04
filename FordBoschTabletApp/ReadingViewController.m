@@ -38,7 +38,7 @@
 {
     if (!_textLayout) {
         // SET THE BOOK PATH HERE
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"peterpan.utf-8" ofType:@"txt"];
+        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"The Honour of the Knights" ofType:@"txt"];
         NSString *txtContent = [[NSString alloc] initWithContentsOfFile:stringPath encoding:NSUTF8StringEncoding error:nil];
         
         // CONFIGURE FONT STYLES HERE

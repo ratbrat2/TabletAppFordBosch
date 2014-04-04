@@ -26,6 +26,7 @@
 @property (nonatomic, assign) NSUInteger livesCount;
 @property (nonatomic, strong) SKLabelNode *livesCountNode;
 @property (nonatomic, strong) AVPlayer *bgVideoPlayer;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 
 @end
 
@@ -205,8 +206,20 @@
 
 - (void)didMoveToView:(SKView *)view
 {
-    [view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)]];
+    [super didMoveToView:view];
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    [view addGestureRecognizer:self.panGesture];
 }
+
+- (void)willMoveFromView:(SKView *)view
+{
+    NSLog(@"MyScene: willMoveFromView called!");
+    [super willMoveFromView:view];
+    if (self.panGesture) {
+        [view removeGestureRecognizer:self.panGesture];
+    }
+}
+
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gesture
 {

@@ -155,7 +155,7 @@ withFilterContext:(id)filterContext
     NSRange matchMessageRange = [textCheckingResult rangeAtIndex:2];
     NSString *matchIndex = [dataString substringWithRange:matchIndexRange];
     NSString *matchMessage = [dataString substringWithRange:matchMessageRange];
-    NSLog(@"Found index '%@' with string '%@'", matchIndex, matchMessage);
+    //NSLog(@"Found index '%@' with string '%@'", matchIndex, matchMessage);
     
     if ([[matchIndex substringToIndex:1] isEqualToString:@"1"]) {
         // Situational Awareness message!

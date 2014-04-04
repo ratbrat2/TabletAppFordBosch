@@ -25,10 +25,12 @@
 {
     if (!_player) {
         // Make sure movie is in root path to this app (e.g. /TabletAppFordBosch/<movie>)
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Awesometown - FOX Cut" ofType:@"mp4"];
+        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Big Buck Bunny" ofType:@"mp4"];
         NSURL *movieURL = [NSURL fileURLWithPath:stringPath];
         _player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
-        _player.controlStyle = MPMovieControlStyleNone;
+        
+        // Keeping media slider for now until stability issues resolved
+        //_player.controlStyle = MPMovieControlStyleNone;
         
     }
     return _player;

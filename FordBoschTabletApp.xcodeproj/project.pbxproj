@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023E7DAA18EE3AE800858CEE /* Big Buck Bunny.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DA918EE3AE800858CEE /* Big Buck Bunny.mp4 */; };
+		023E7DAC18EE3C7800858CEE /* honour of the knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAB18EE3C7800858CEE /* honour of the knights.txt */; };
+		023E7DAE18EE407500858CEE /* The Honour of the Knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */; };
 		02476304182F7564004F020A /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02476303182F7564004F020A /* VideoViewController.m */; };
 		026FB3D6183B557800DB6425 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026FB3D5183B557800DB6425 /* ReadingViewController.m */; };
-		026FB3D8183B633D00DB6425 /* peterpan.utf-8.txt in Resources */ = {isa = PBXBuildFile; fileRef = 026FB3D7183B633D00DB6425 /* peterpan.utf-8.txt */; };
-		029F30F918CE942100079EC5 /* Awesometown - FOX Cut.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */; };
 		02DF32C81857BA0C00A87CFB /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF32C71857BA0C00A87CFB /* QuestionsViewController.m */; };
-		02EFCE3818BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 02EFCE3718BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 */; };
 		5C09A7E01857BA560025275F /* black_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5C09A7D01857BA560025275F /* black_bg.mp4 */; };
 		5C09A7E11857BA560025275F /* FlubbleColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C09A7D21857BA560025275F /* FlubbleColors.m */; };
 		5C09A7E21857BA560025275F /* FlubbleSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C09A7D51857BA560025275F /* FlubbleSpawner.m */; };
@@ -54,16 +54,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023E7DA918EE3AE800858CEE /* Big Buck Bunny.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Big Buck Bunny.mp4"; sourceTree = "<group>"; };
+		023E7DAB18EE3C7800858CEE /* honour of the knights.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "honour of the knights.txt"; sourceTree = "<group>"; };
+		023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "The Honour of the Knights.txt"; sourceTree = "<group>"; };
 		02476302182F7564004F020A /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		02476303182F7564004F020A /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		026FB3D4183B557800DB6425 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
 		026FB3D5183B557800DB6425 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
-		026FB3D7183B633D00DB6425 /* peterpan.utf-8.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "peterpan.utf-8.txt"; sourceTree = "<group>"; };
-		029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Awesometown - FOX Cut.mp4"; sourceTree = "<group>"; };
 		02DF32C51857188B00A87CFB /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		02DF32C61857BA0C00A87CFB /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		02DF32C71857BA0C00A87CFB /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
-		02EFCE3718BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Its.Always.Sunny.s09e10.mp4; sourceTree = "<group>"; };
 		5C09A7D01857BA560025275F /* black_bg.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = black_bg.mp4; sourceTree = "<group>"; };
 		5C09A7D11857BA560025275F /* FlubbleColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlubbleColors.h; sourceTree = "<group>"; };
 		5C09A7D21857BA560025275F /* FlubbleColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlubbleColors.m; sourceTree = "<group>"; };
@@ -137,8 +137,7 @@
 		02476301182F7462004F020A /* Videos */ = {
 			isa = PBXGroup;
 			children = (
-				029F30F818CE942100079EC5 /* Awesometown - FOX Cut.mp4 */,
-				02EFCE3718BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 */,
+				023E7DA918EE3AE800858CEE /* Big Buck Bunny.mp4 */,
 			);
 			name = Videos;
 			sourceTree = "<group>";
@@ -146,7 +145,8 @@
 		026FB3D9183B634D00DB6425 /* Books */ = {
 			isa = PBXGroup;
 			children = (
-				026FB3D7183B633D00DB6425 /* peterpan.utf-8.txt */,
+				023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */,
+				023E7DAB18EE3C7800858CEE /* honour of the knights.txt */,
 			);
 			name = Books;
 			sourceTree = "<group>";
@@ -351,15 +351,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CA284E21819C78A00E1A029 /* Images.xcassets in Resources */,
-				02EFCE3818BC398C0056587F /* Its.Always.Sunny.s09e10.mp4 in Resources */,
 				5C09A7E81857BA560025275F /* spark.png in Resources */,
-				029F30F918CE942100079EC5 /* Awesometown - FOX Cut.mp4 in Resources */,
 				5CA284D41819C78A00E1A029 /* InfoPlist.strings in Resources */,
 				5C09A7E71857BA560025275F /* PlanetEdgeParticle.sks in Resources */,
+				023E7DAC18EE3C7800858CEE /* honour of the knights.txt in Resources */,
 				5CA284DD1819C78A00E1A029 /* Main.storyboard in Resources */,
 				5CA287C81819CB5500E1A029 /* Documentation.html in Resources */,
+				023E7DAE18EE407500858CEE /* The Honour of the Knights.txt in Resources */,
 				5C09A7E01857BA560025275F /* black_bg.mp4 in Resources */,
-				026FB3D8183B633D00DB6425 /* peterpan.utf-8.txt in Resources */,
+				023E7DAA18EE3AE800858CEE /* Big Buck Bunny.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

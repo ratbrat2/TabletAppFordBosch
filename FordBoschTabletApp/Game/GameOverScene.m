@@ -11,6 +11,7 @@
 
 @interface GameOverScene()
 @property (nonatomic, assign) NSUInteger score;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @end
 
 @implementation GameOverScene
@@ -54,7 +55,18 @@
 
 - (void)didMoveToView:(SKView *)view
 {
-    [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)]];
+    [super didMoveToView:view];
+    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    [view addGestureRecognizer:self.tapGesture];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    NSLog(@"GameOverScene: willMoveFromView called!");
+    [super willMoveFromView:view];
+    if (self.tapGesture) {
+        [view removeGestureRecognizer:self.tapGesture];
+    }
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)gesture
