@@ -137,6 +137,8 @@ withFilterContext:(id)filterContext
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     // Use Regex to see if situational or takeover
+    // TODO: change this format to log into ipad
+    // participant id:event numbering: counter: message: random stuff
     NSString *pattern = @"^(\\d+):(.*):.*$";
     
     NSRegularExpression *regex = [NSRegularExpression

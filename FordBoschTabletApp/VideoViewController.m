@@ -20,20 +20,19 @@
 
 #pragma mark - Properties
 
-// lazy instantiation
-- (MPMoviePlayerController *)player
+// setup player
+- (void)setupPlayer
 {
-    if (!_player) {
+    if (!self.player) {
         // Make sure movie is in root path to this app (e.g. /TabletAppFordBosch/<movie>)
         NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Big Buck Bunny" ofType:@"mp4"];
         NSURL *movieURL = [NSURL fileURLWithPath:stringPath];
-        _player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
+        self.player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
         
         // Keeping media slider for now until stability issues resolved
-        //_player.controlStyle = MPMovieControlStyleNone;
+        //self.player.controlStyle = MPMovieControlStyleNone;
         
     }
-    return _player;
 }
 
 #pragma mark - Initialization
@@ -42,6 +41,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (!self.player) {
+        [self setupPlayer];
+    }
     [self.player prepareToPlay];
     [self.player.view setFrame:self.view.bounds];  // player's frame must match parent's
     [self.view addSubview: self.player.view];
@@ -55,6 +57,16 @@
 - (void)viewDidLayoutSubviews
 {
     [self.player.view setFrame:self.view.bounds];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    // Unload player
+    if (self.player) {
+        self.player = nil;
+    }
 }
 
 @end

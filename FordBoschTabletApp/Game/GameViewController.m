@@ -9,7 +9,12 @@
 #import "GameViewController.h"
 #import "MyScene.h"
 
+@interface GameViewController ()
+@property (nonatomic, strong) MyScene *myScene;
+@end
+
 @implementation GameViewController
+
 
 - (void)viewDidLoad
 {
@@ -25,11 +30,24 @@
 {
     SKView * skView = (SKView *)self.view;
     // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    if (!self.myScene) {
+        self.myScene = [MyScene sceneWithSize:skView.bounds.size];
+        self.myScene.scaleMode = SKSceneScaleModeAspectFill;
     
-    // Present the scene.
-    [skView presentScene:scene];
+        // Present the scene.
+        [skView presentScene:self.myScene];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    // Unload
+    if (self.myScene) {
+        NSLog(@"unloadTimer from viewDidDisappear");
+        [self.myScene unloadTimer];
+    }
 }
 
 - (BOOL)shouldAutorotate

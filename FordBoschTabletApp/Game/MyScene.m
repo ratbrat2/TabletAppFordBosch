@@ -27,6 +27,7 @@
 @property (nonatomic, strong) SKLabelNode *livesCountNode;
 @property (nonatomic, strong) AVPlayer *bgVideoPlayer;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -133,6 +134,12 @@
 
 - (void)transitionToGameOver
 {
+    /*
+    if (self.timer) {
+        NSLog(@"unloadTimer from transitionToGameOver");
+        [self unloadTimer];
+    }
+     */
     SKTransition *transition = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
     transition.pausesOutgoingScene = YES;
     GameOverScene *goScene = [[GameOverScene alloc] initWithSize:self.size score:self.score];
@@ -166,18 +173,28 @@
         self.flubbleOrbitRadius = planet.frame.size.width/2 + self.flubbleNode.frame.size.width/2 + FLUBBLE_PLANET_OFFSET;
         [planet addChild:self.flubbleNode];
         
-        [NSTimer scheduledTimerWithTimeInterval:3
-                                         target:self
-                                       selector:@selector(addEnemy:)
-                                       userInfo:nil
-                                        repeats:YES];
+        NSLog(@"start timer!");
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:3
+                                                      target:self
+                                                    selector:@selector(addEnemy:)
+                                                    userInfo:nil
+                                                     repeats:YES];
         
     }
     return self;
 }
 
+- (void)unloadTimer
+{
+    NSLog(@"unloadTimer");
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
 - (void)addEnemy:(NSTimer *)timer
 {
+    NSLog(@"addEnemy");
+    
     SKNode *newEnemy = [FlubbleSpawner enemyCircleWithStartingRadius:self.size.width];
     [self.enemies addObject:newEnemy];
     [self addChild:newEnemy];
@@ -213,7 +230,6 @@
 
 - (void)willMoveFromView:(SKView *)view
 {
-    NSLog(@"MyScene: willMoveFromView called!");
     [super willMoveFromView:view];
     if (self.panGesture) {
         [view removeGestureRecognizer:self.panGesture];

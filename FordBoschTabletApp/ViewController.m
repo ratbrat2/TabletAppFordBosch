@@ -22,7 +22,7 @@
     
     // When user first enters a view, disable back button until at least 7 minutes
     if (self.navigationItem) {
-        self.navigationItem.hidesBackButton = YES;
+        //self.navigationItem.hidesBackButton = YES;
         [NSTimer scheduledTimerWithTimeInterval:420.0f
                                          target:self
                                        selector:@selector(reEnableBackButton:)
@@ -35,7 +35,7 @@
 {
     if (self.navigationItem) {
         if (![self.title isEqual: @"Main"]) {
-            self.navigationItem.hidesBackButton = NO;
+            //self.navigationItem.hidesBackButton = NO;
         }
     }
 }

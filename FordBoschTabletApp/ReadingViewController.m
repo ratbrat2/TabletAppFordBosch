@@ -67,6 +67,27 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    // Unload
+    for (UIView *v in [self.containingView subviews]) {
+        [v removeFromSuperview];
+    }
+    
+    for (UIView *v in [self.scrollView subviews]) {
+        [v removeFromSuperview];
+    }
+
+    for (NSLayoutManager *l in [self.textStorage layoutManagers]) {
+        [self.textStorage removeLayoutManager:l];
+    }
+    
+    self.textLayout = nil;
+    self.textStorage = nil;
+}
+
 - (void)addPages
 {
     // Create a text container
@@ -82,6 +103,25 @@
     // Add text view to the scroll view
     [self.scrollView addSubview:textView];
     self.lastPage++;
+    
+    if ([[self.scrollView subviews] count] > 5) {
+        [self removePages:5];
+    }
+}
+
+- (void)removePages:(NSUInteger)keep
+{
+    NSUInteger numViewsToRemove = [[self.scrollView subviews] count] - keep;
+    if (numViewsToRemove < 1) return;
+    
+    NSUInteger counter = 0;
+    for (UIView *v in [self.scrollView subviews]) {
+        [v removeFromSuperview];
+        counter++;
+        if (counter == numViewsToRemove) {
+            break;
+        }
+    }
 }
 
 // Scroll View Delegate
@@ -94,7 +134,16 @@
         self.scrollView.contentSize  = CGSizeMake((self.containingView.bounds.size.width-20)*(self.lastPage + 1),self.containingView.bounds.size.height-20);
         [self addPages];
     }
-    
 }
+
+- (void)didReceiveMemoryWarning
+{
+    NSLog(@"Reading: didReceiveMemoryWarning");
+    [super didReceiveMemoryWarning];
+    // Release any cached data, images, etc that aren't in use.
+    
+    [self removePages:2];
+}
+
 
 @end
