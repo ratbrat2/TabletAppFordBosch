@@ -13,10 +13,10 @@
                         <viewControllerLayoutGuide type="bottom" id="tci-wO-5YZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EpX-x9-FmJ" customClass="SKView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utk-cL-Fl9">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utk-cL-Fl9">
                                 <rect key="frame" x="330" y="867" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -29,7 +29,7 @@
                                     <action selector="situationalAwareness:" destination="gL5-8m-juj" eventType="touchUpInside" id="dSh-SX-eSN"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-lr-mRC">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-lr-mRC">
                                 <rect key="frame" x="388" y="867" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -71,23 +71,13 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6w-oc-Di5">
-                                <rect key="frame" x="20" y="197" width="362" height="267"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D0-20-Hop">
+                                <rect key="frame" x="131" y="121" width="507" height="374"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="362" id="oXY-Qh-jwV"/>
-                                    <constraint firstAttribute="height" constant="267" id="w3k-sD-jQl"/>
+                                    <constraint firstAttribute="height" constant="374" id="1J1-iA-grx"/>
+                                    <constraint firstAttribute="width" constant="507" id="S8a-Zu-Yym"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="GameButton">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="gL5-8m-juj" kind="push" id="GnD-91-SfO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D0-20-Hop">
-                                <rect key="frame" x="386" y="197" width="362" height="267"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="VideoButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -96,11 +86,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTt-dj-lXP">
-                                <rect key="frame" x="386" y="467" width="362" height="267"/>
+                                <rect key="frame" x="131" y="508" width="507" height="374"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="267" id="baK-UR-JNv"/>
-                                </constraints>
                                 <state key="normal" backgroundImage="ReadingButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -112,7 +99,8 @@
                                 <rect key="frame" x="332" y="890" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="O2m-aC-W1W"/>
+                                    <constraint firstAttribute="width" constant="50" id="Lxb-Iw-DwP"/>
+                                    <constraint firstAttribute="height" constant="50" id="gK2-e2-9Tq"/>
                                 </constraints>
                                 <state key="normal" image="SituationalAwareness">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,8 +113,7 @@
                                 <rect key="frame" x="386" y="890" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9iB-NK-4Zp"/>
-                                    <constraint firstAttribute="width" constant="50" id="aaP-Mm-Kdp"/>
+                                    <constraint firstAttribute="width" constant="50" id="xU2-8U-cbr"/>
                                 </constraints>
                                 <state key="normal" image="TakeOver">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,21 +125,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="bottom" secondItem="fCI-97-yfz" secondAttribute="bottom" id="4C6-kq-l8x"/>
-                            <constraint firstItem="q6w-oc-Di5" firstAttribute="top" secondItem="ISx-Rq-Qse" secondAttribute="bottom" constant="197" id="4EY-7z-jsa"/>
-                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="top" secondItem="fCI-97-yfz" secondAttribute="top" id="6f7-b2-zla"/>
-                            <constraint firstItem="0D0-20-Hop" firstAttribute="baseline" secondItem="q6w-oc-Di5" secondAttribute="baseline" id="81x-Qe-AMy"/>
-                            <constraint firstItem="0D0-20-Hop" firstAttribute="bottom" secondItem="q6w-oc-Di5" secondAttribute="bottom" id="9dE-Da-5Uz"/>
-                            <constraint firstItem="rTt-dj-lXP" firstAttribute="top" secondItem="0D0-20-Hop" secondAttribute="bottom" constant="3" id="HMF-Xj-rmq"/>
-                            <constraint firstItem="fCI-97-yfz" firstAttribute="leading" secondItem="z5g-PJ-sJn" secondAttribute="trailing" constant="4" id="POJ-DY-O9Y"/>
-                            <constraint firstItem="fCI-97-yfz" firstAttribute="leading" secondItem="rTt-dj-lXP" secondAttribute="leading" id="R92-Yy-5lR"/>
-                            <constraint firstAttribute="trailing" secondItem="0D0-20-Hop" secondAttribute="trailing" constant="20" symbolic="YES" id="RgK-iU-3rz"/>
-                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="trailing" secondItem="q6w-oc-Di5" secondAttribute="trailing" id="SLd-eg-zUX"/>
-                            <constraint firstItem="fCI-97-yfz" firstAttribute="leading" secondItem="0D0-20-Hop" secondAttribute="leading" id="Xto-4w-OTQ"/>
-                            <constraint firstItem="q6w-oc-Di5" firstAttribute="top" secondItem="0D0-20-Hop" secondAttribute="top" id="d9T-bu-sxM"/>
-                            <constraint firstItem="q6w-oc-Di5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="lI7-vM-PC9"/>
-                            <constraint firstAttribute="bottom" secondItem="z5g-PJ-sJn" secondAttribute="bottom" constant="20" symbolic="YES" id="qqw-e9-cUT"/>
-                            <constraint firstItem="0D0-20-Hop" firstAttribute="trailing" secondItem="rTt-dj-lXP" secondAttribute="trailing" id="vOp-Gg-buh"/>
+                            <constraint firstItem="rTt-dj-lXP" firstAttribute="trailing" secondItem="0D0-20-Hop" secondAttribute="trailing" id="5Y9-qb-mYu"/>
+                            <constraint firstItem="rTt-dj-lXP" firstAttribute="leading" secondItem="0D0-20-Hop" secondAttribute="leading" id="6oE-Rv-niH"/>
+                            <constraint firstItem="0D0-20-Hop" firstAttribute="top" secondItem="ISx-Rq-Qse" secondAttribute="bottom" constant="121" id="8mS-fx-Jr9"/>
+                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="top" secondItem="rTt-dj-lXP" secondAttribute="bottom" constant="8" symbolic="YES" id="GXq-FG-ApA"/>
+                            <constraint firstItem="rTt-dj-lXP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M0b-Rl-DNM"/>
+                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="bottom" secondItem="fCI-97-yfz" secondAttribute="bottom" id="RLK-fB-SRR"/>
+                            <constraint firstItem="z5g-PJ-sJn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="332" id="VJH-9m-EKQ"/>
+                            <constraint firstItem="rTt-dj-lXP" firstAttribute="top" secondItem="0D0-20-Hop" secondAttribute="bottom" constant="13" id="X15-Lx-PrE"/>
+                            <constraint firstItem="fCI-97-yfz" firstAttribute="top" secondItem="rTt-dj-lXP" secondAttribute="bottom" constant="8" symbolic="YES" id="iYY-Mh-bWc"/>
+                            <constraint firstAttribute="bottom" secondItem="z5g-PJ-sJn" secondAttribute="bottom" constant="20" symbolic="YES" id="rMs-no-urO"/>
+                            <constraint firstItem="fCI-97-yfz" firstAttribute="leading" secondItem="z5g-PJ-sJn" secondAttribute="trailing" constant="4" id="sPo-xS-lbw"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -160,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-267" y="662"/>
+            <point key="canvasLocation" x="-299" y="692"/>
         </scene>
         <!--Video View Controller - Video-->
         <scene sceneID="QYH-sN-Ub8">
@@ -380,7 +363,6 @@ Yup, this is actually a weather-related placeholder question.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="GameButton" width="571" height="419"/>
         <image name="ReadingButton" width="571" height="419"/>
         <image name="SituationalAwareness" width="125" height="125"/>
         <image name="TakeOver" width="516" height="516"/>
