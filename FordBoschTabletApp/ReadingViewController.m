@@ -21,6 +21,8 @@
 @implementation ReadingViewController
 
 #define READER_PAGES_INCREMENT (4)  // Start with this many pages
+#define READER_PAGES_COUNT (7)      // Clear all but this many pages in memory warning event
+                                    // 7 caps memory at 20-25MB
 
 - (UIScrollView *)scrollView
 {
@@ -38,7 +40,7 @@
 {
     if (!_textLayout) {
         // SET THE BOOK PATH HERE
-        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"The Honour of the Knights" ofType:@"txt"];
+        NSString *stringPath = [[NSBundle mainBundle] pathForResource:@"Cory_Doctorow_-_Little_Brother" ofType:@"txt"];
         NSString *txtContent = [[NSString alloc] initWithContentsOfFile:stringPath encoding:NSUTF8StringEncoding error:nil];
         
         // CONFIGURE FONT STYLES HERE
@@ -104,8 +106,8 @@
     [self.scrollView addSubview:textView];
     self.lastPage++;
     
-    if ([[self.scrollView subviews] count] > 5) {
-        [self removePages:5];
+    if ([[self.scrollView subviews] count] > READER_PAGES_COUNT) {
+        [self removePages:READER_PAGES_COUNT];
     }
 }
 
@@ -142,7 +144,7 @@
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
     
-    [self removePages:2];
+    [self removePages:READER_PAGES_COUNT];
 }
 
 

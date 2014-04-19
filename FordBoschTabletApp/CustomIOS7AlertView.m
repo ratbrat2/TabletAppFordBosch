@@ -10,6 +10,7 @@
 //
 
 #import "CustomIOS7AlertView.h"
+#import "Constants.h"
 #import <QuartzCore/QuartzCore.h>
 
 const static CGFloat kCustomIOS7AlertViewDefaultButtonHeight       = 50;
@@ -118,6 +119,38 @@ CGFloat buttonSpacerHeight = 0;
      ];
 }
 
+// Ugh - Duplicated in ViewController.m and AppDelegate.m, doing it this way to simplify
+- (void)writeToLog:(NSString *)message
+{
+    //Get the file path
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *fileName = [documentsDirectory stringByAppendingPathComponent:LOG_FILE_PATH];
+    
+    //create file if it doesn't exist
+    if(![[NSFileManager defaultManager] fileExistsAtPath:fileName])
+        [[NSFileManager defaultManager] createFileAtPath:fileName contents:nil attributes:nil];
+    
+    // Get current time stamp
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = @"yyyy-MM-dd, HH:mm:ss.SS";
+    [dateFormatter setDateFormat:formatString];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
+    
+    NSDate *date = [[NSDate alloc] init];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setLocale:usLocale];
+    
+    // Form message
+    NSString *content = [NSString stringWithFormat:@"%@,%@\n", [dateFormatter stringFromDate:date], message];
+    
+    //append text to file (you'll probably want to add a newline every write)
+    NSFileHandle *file = [NSFileHandle fileHandleForUpdatingAtPath:fileName];
+    [file seekToEndOfFile];
+    [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    [file closeFile];
+}
+
+
 // Button has been touched
 - (IBAction)customIOS7dialogButtonTouchUpInside:(id)sender
 {
@@ -134,6 +167,7 @@ CGFloat buttonSpacerHeight = 0;
 - (void)customIOS7dialogButtonTouchUpInside: (CustomIOS7AlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"Button Clicked! %d, %d", buttonIndex, [alertView tag]);
+    [self writeToLog:[NSString stringWithFormat:@"%@,-1,Closed Takeover Alert", LOG_IPAD_EVENT]];
     [self close];
 }
 

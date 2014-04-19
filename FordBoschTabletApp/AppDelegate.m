@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableDictionary *storedMessages;
 @property (nonatomic) NSUInteger lastSituationalAwarenessIndex;
 @property (nonatomic) NSUInteger lastTakeoverIndex;
+@property (nonatomic) NSInteger lastEventId;
 @property (nonatomic) BOOL firstMessageReceived;
 
 @end
@@ -62,8 +63,9 @@
     self.situationalMessageView.backgroundColor = [UIColor blackColor];
     [self.window.rootViewController.view addSubview:self.situationalMessageView];
     
-    self.lastTakeoverIndex = 0;
-    self.lastSituationalAwarenessIndex = 0;
+    self.lastTakeoverIndex = -100;
+    self.lastSituationalAwarenessIndex = -100;
+    self.lastEventId = -100;
     self.firstMessageReceived = NO;
 
     return YES;
@@ -128,6 +130,37 @@
                                     repeats:NO];
 }
 
+// Duplicated in ViewController.m
+- (void)writeToLog:(NSString *)message
+{
+    //Get the file path
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *fileName = [documentsDirectory stringByAppendingPathComponent:LOG_FILE_PATH];
+    
+    //create file if it doesn't exist
+    if(![[NSFileManager defaultManager] fileExistsAtPath:fileName])
+        [[NSFileManager defaultManager] createFileAtPath:fileName contents:nil attributes:nil];
+    
+    // Get current time stamp
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *formatString = @"yyyy-MM-dd, HH:mm:ss.SS";
+    [dateFormatter setDateFormat:formatString];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
+    
+    NSDate *date = [[NSDate alloc] init];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setLocale:usLocale];
+    
+    // Form message
+    NSString *content = [NSString stringWithFormat:@"%@,%@\n", [dateFormatter stringFromDate:date], message];
+    
+    //append text to file (you'll probably want to add a newline every write)
+    NSFileHandle *file = [NSFileHandle fileHandleForUpdatingAtPath:fileName];
+    [file seekToEndOfFile];
+    [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
+    [file closeFile];
+}
+
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock
    didReceiveData:(NSData *)data
       fromAddress:(NSData *)address
@@ -137,9 +170,8 @@ withFilterContext:(id)filterContext
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     // Use Regex to see if situational or takeover
-    // TODO: change this format to log into ipad
     // participant id:event numbering: counter: message: random stuff
-    NSString *pattern = @"^(\\d+):(.*):.*$";
+    NSString *pattern = @"^([^:]+):([^:]+):(\\d+):(.*):.*$";
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:pattern
@@ -153,32 +185,55 @@ withFilterContext:(id)filterContext
         return;
     }
     
-    NSRange matchIndexRange = [textCheckingResult rangeAtIndex:1];
-    NSRange matchMessageRange = [textCheckingResult rangeAtIndex:2];
+    NSRange matchParticipantRange = [textCheckingResult rangeAtIndex:1];
+    NSRange matchEventRange = [textCheckingResult rangeAtIndex:2];
+    NSRange matchIndexRange = [textCheckingResult rangeAtIndex:3];
+    NSRange matchMessageRange = [textCheckingResult rangeAtIndex:4];
+    NSString *matchParticipant = [dataString substringWithRange:matchParticipantRange];
+    NSString *matchEvent = [dataString substringWithRange:matchEventRange];
     NSString *matchIndex = [dataString substringWithRange:matchIndexRange];
     NSString *matchMessage = [dataString substringWithRange:matchMessageRange];
-    //NSLog(@"Found index '%@' with string '%@'", matchIndex, matchMessage);
+    //NSLog(@"Found participant '%@', event '%@', index '%@', message '%@'", matchParticipant, matchEvent, matchIndex, matchMessage);
     
+    // Check for Event to see that a new event has been received from simulator
+    if ([matchEvent integerValue] != self.lastEventId) {
+        // Log
+        [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@", LOG_SIMULATOR_EVENT, matchParticipant, matchEvent]];
+        self.lastEventId = [matchEvent integerValue];
+    }
+    
+    // Check for index to see that a new message has been received from simulator
     if ([[matchIndex substringToIndex:1] isEqualToString:@"1"]) {
+        NSLog(@"Situational awareness!");
         // Situational Awareness message!
         if ([matchMessage isEqualToString:UDP_CLEAR_MESSAGE]) {
+            NSLog(@"CLEAR Situational awareness!");
             [self clearSituationalAwareness];
             // Also cleanup counters
-            self.lastSituationalAwarenessIndex = 0;
-            self.lastTakeoverIndex = 0;
+            self.lastSituationalAwarenessIndex = -100;
+            self.lastTakeoverIndex = -100;
+            self.lastEventId = -100;
             self.firstMessageReceived = NO;
+            // Log
+            [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,UDP_CLEAR_MESSAGE,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
 
         } else {
+            NSLog(@"Regular Situational awareness!");
             // Only update if monotonically increasing
             if ([matchIndex integerValue] > self.lastSituationalAwarenessIndex) {
                 self.lastSituationalAwarenessIndex = [matchIndex integerValue];
 
                 if (!self.firstMessageReceived) {
+                    NSLog(@"First message received: Situational awareness");
                     // If first message hasn't been received (starting logic), update index to first received UDP but don't display message
                     self.firstMessageReceived = YES;
                     return;
                 }
 
+                NSLog(@"Situational awareness presented!!");
+                // Log
+                [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Situational Awareness,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+                
                 [self.storedMessages setValue:matchMessage forKey:matchIndex];
             
                 if (self.containerView && self.situationalAwarenessLabel) {
@@ -224,6 +279,9 @@ withFilterContext:(id)filterContext
                 self.firstMessageReceived = YES;
                 return;
             }
+            
+            // Log
+            [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Takeover,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
 
             [self.storedMessages setValue:matchMessage forKey:matchIndex];
         

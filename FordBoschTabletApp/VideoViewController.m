@@ -30,7 +30,7 @@
         self.player = [[MPMoviePlayerController alloc] initWithContentURL: movieURL];
         
         // Keeping media slider for now until stability issues resolved
-        //self.player.controlStyle = MPMovieControlStyleNone;
+        self.player.controlStyle = MPMovieControlStyleNone;
         
     }
 }

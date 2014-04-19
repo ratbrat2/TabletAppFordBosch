@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0218218118FA106800A6E5D2 /* Cory_Doctorow_-_Little_Brother.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0218218018FA106800A6E5D2 /* Cory_Doctorow_-_Little_Brother.txt */; };
 		023E7DAA18EE3AE800858CEE /* Big Buck Bunny.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DA918EE3AE800858CEE /* Big Buck Bunny.mp4 */; };
 		023E7DAC18EE3C7800858CEE /* honour of the knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAB18EE3C7800858CEE /* honour of the knights.txt */; };
 		023E7DAE18EE407500858CEE /* The Honour of the Knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0218218018FA106800A6E5D2 /* Cory_Doctorow_-_Little_Brother.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Cory_Doctorow_-_Little_Brother.txt"; sourceTree = "<group>"; };
 		023E7DA918EE3AE800858CEE /* Big Buck Bunny.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Big Buck Bunny.mp4"; sourceTree = "<group>"; };
 		023E7DAB18EE3C7800858CEE /* honour of the knights.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "honour of the knights.txt"; sourceTree = "<group>"; };
 		023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "The Honour of the Knights.txt"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		026FB3D9183B634D00DB6425 /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				0218218018FA106800A6E5D2 /* Cory_Doctorow_-_Little_Brother.txt */,
 				023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */,
 				023E7DAB18EE3C7800858CEE /* honour of the knights.txt */,
 			);
@@ -354,6 +357,7 @@
 				5C09A7E81857BA560025275F /* spark.png in Resources */,
 				5CA284D41819C78A00E1A029 /* InfoPlist.strings in Resources */,
 				5C09A7E71857BA560025275F /* PlanetEdgeParticle.sks in Resources */,
+				0218218118FA106800A6E5D2 /* Cory_Doctorow_-_Little_Brother.txt in Resources */,
 				023E7DAC18EE3C7800858CEE /* honour of the knights.txt in Resources */,
 				5CA284DD1819C78A00E1A029 /* Main.storyboard in Resources */,
 				5CA287C81819CB5500E1A029 /* Documentation.html in Resources */,
