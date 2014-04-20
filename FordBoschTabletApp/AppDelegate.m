@@ -20,8 +20,8 @@
 @property (nonatomic, strong) UILabel *situationalAwarenessLabel;
 @property (strong, nonatomic) NSTimer *timer;
 @property (strong, nonatomic) NSMutableDictionary *storedMessages;
-@property (nonatomic) NSUInteger lastSituationalAwarenessIndex;
-@property (nonatomic) NSUInteger lastTakeoverIndex;
+@property (nonatomic) NSInteger lastSituationalAwarenessIndex;
+@property (nonatomic) NSInteger lastTakeoverIndex;
 @property (nonatomic) NSInteger lastEventId;
 @property (nonatomic) BOOL firstMessageReceived;
 
@@ -193,7 +193,7 @@ withFilterContext:(id)filterContext
     NSString *matchEvent = [dataString substringWithRange:matchEventRange];
     NSString *matchIndex = [dataString substringWithRange:matchIndexRange];
     NSString *matchMessage = [dataString substringWithRange:matchMessageRange];
-    //NSLog(@"Found participant '%@', event '%@', index '%@', message '%@'", matchParticipant, matchEvent, matchIndex, matchMessage);
+    //NSLog(@"Found participant '%@', event '%@', index '%@', message '%@', lastSA: '%d', lastTO: '%d'", matchParticipant, matchEvent, matchIndex, matchMessage, self.lastSituationalAwarenessIndex, self.lastTakeoverIndex);
     
     // Check for Event to see that a new event has been received from simulator
     if ([matchEvent integerValue] != self.lastEventId) {
@@ -204,10 +204,10 @@ withFilterContext:(id)filterContext
     
     // Check for index to see that a new message has been received from simulator
     if ([[matchIndex substringToIndex:1] isEqualToString:@"1"]) {
-        NSLog(@"Situational awareness!");
+        //NSLog(@"Situational awareness!");
         // Situational Awareness message!
         if ([matchMessage isEqualToString:UDP_CLEAR_MESSAGE]) {
-            NSLog(@"CLEAR Situational awareness!");
+            //NSLog(@"CLEAR Situational awareness!");
             [self clearSituationalAwareness];
             // Also cleanup counters
             self.lastSituationalAwarenessIndex = -100;
@@ -218,19 +218,19 @@ withFilterContext:(id)filterContext
             [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,UDP_CLEAR_MESSAGE,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
 
         } else {
-            NSLog(@"Regular Situational awareness!");
+            //NSLog(@"Regular Situational awareness!");
             // Only update if monotonically increasing
             if ([matchIndex integerValue] > self.lastSituationalAwarenessIndex) {
                 self.lastSituationalAwarenessIndex = [matchIndex integerValue];
 
                 if (!self.firstMessageReceived) {
-                    NSLog(@"First message received: Situational awareness");
+                    //NSLog(@"First message received: Situational awareness");
                     // If first message hasn't been received (starting logic), update index to first received UDP but don't display message
                     self.firstMessageReceived = YES;
                     return;
                 }
 
-                NSLog(@"Situational awareness presented!!");
+                //NSLog(@"Situational awareness presented!!");
                 // Log
                 [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Situational Awareness,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
                 

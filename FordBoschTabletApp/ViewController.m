@@ -22,15 +22,33 @@
     
     // When user first enters a view, disable back button until at least 7 minutes
     if (self.navigationItem) {
-        self.navigationItem.hidesBackButton = YES;
-        [NSTimer scheduledTimerWithTimeInterval:420.0f
+        [NSTimer scheduledTimerWithTimeInterval:30.0f
                                          target:self
-                                       selector:@selector(reEnableBackButton:)
+                                       selector:@selector(disableBackButton:)
                                        userInfo:nil
                                         repeats:NO];
     }
     // Log entered into view message
     [self writeToLog:[NSString stringWithFormat:@"%@,-1,Entered %@ View", LOG_IPAD_EVENT, self.title]];
+}
+
+- (void)disableBackButton:(NSTimer *)timer
+{
+    self.navigationItem.hidesBackButton = YES;
+    [NSTimer scheduledTimerWithTimeInterval:360.0f
+                                     target:self
+                                   selector:@selector(reEnableBackButton:)
+                                   userInfo:nil
+                                    repeats:NO];
+
+}
+- (void)reEnableBackButton:(NSTimer *)timer
+{
+    if (self.navigationItem) {
+        if (![self.title isEqual: @"Main"]) {
+            self.navigationItem.hidesBackButton = NO;
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -43,14 +61,6 @@
 }
 
 
-- (void)reEnableBackButton:(NSTimer *)timer
-{
-    if (self.navigationItem) {
-        if (![self.title isEqual: @"Main"]) {
-            self.navigationItem.hidesBackButton = NO;
-        }
-    }
-}
 
 // Duplicated in AppDelegate.m
 - (void)writeToLog:(NSString *)message

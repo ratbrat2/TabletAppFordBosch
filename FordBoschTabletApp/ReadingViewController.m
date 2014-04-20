@@ -32,6 +32,7 @@
         _scrollView.contentSize  = CGSizeMake((self.containingView.bounds.size.width-20)*READER_PAGES_INCREMENT,self.containingView.bounds.size.height-20);
         _scrollView.pagingEnabled = YES;
         [self.containingView addSubview:_scrollView];
+        _scrollView.opaque = YES;
     }
     return _scrollView;
 }
