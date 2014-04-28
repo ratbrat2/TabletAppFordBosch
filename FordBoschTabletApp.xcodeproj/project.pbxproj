@@ -12,6 +12,7 @@
 		023E7DAC18EE3C7800858CEE /* honour of the knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAB18EE3C7800858CEE /* honour of the knights.txt */; };
 		023E7DAE18EE407500858CEE /* The Honour of the Knights.txt in Resources */ = {isa = PBXBuildFile; fileRef = 023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */; };
 		02476304182F7564004F020A /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02476303182F7564004F020A /* VideoViewController.m */; };
+		024E9058190E040700A9CBA5 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 024E9057190E040700A9CBA5 /* VariableStore.m */; };
 		026FB3D6183B557800DB6425 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 026FB3D5183B557800DB6425 /* ReadingViewController.m */; };
 		02DF32C81857BA0C00A87CFB /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DF32C71857BA0C00A87CFB /* QuestionsViewController.m */; };
 		5C09A7E01857BA560025275F /* black_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5C09A7D01857BA560025275F /* black_bg.mp4 */; };
@@ -61,6 +62,8 @@
 		023E7DAD18EE407500858CEE /* The Honour of the Knights.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "The Honour of the Knights.txt"; sourceTree = "<group>"; };
 		02476302182F7564004F020A /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		02476303182F7564004F020A /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		024E9056190E040700A9CBA5 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
+		024E9057190E040700A9CBA5 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
 		026FB3D4183B557800DB6425 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
 		026FB3D5183B557800DB6425 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
 		02DF32C51857188B00A87CFB /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 		5CA284D01819C78A00E1A029 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				024E9056190E040700A9CBA5 /* VariableStore.h */,
+				024E9057190E040700A9CBA5 /* VariableStore.m */,
 				5CA284D81819C78A00E1A029 /* AppDelegate.h */,
 				5CA284D91819C78A00E1A029 /* AppDelegate.m */,
 				5CA284D11819C78A00E1A029 /* FordBoschTabletApp-Info.plist */,
@@ -395,6 +400,7 @@
 				02DF32C81857BA0C00A87CFB /* QuestionsViewController.m in Sources */,
 				5CA284D61819C78A00E1A029 /* main.m in Sources */,
 				5C09A7E21857BA560025275F /* FlubbleSpawner.m in Sources */,
+				024E9058190E040700A9CBA5 /* VariableStore.m in Sources */,
 				5C09A8081857C1060025275F /* CustomIOS7AlertView.m in Sources */,
 				5C09A7E61857BA560025275F /* MyScene.m in Sources */,
 			);

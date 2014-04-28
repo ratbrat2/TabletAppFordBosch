@@ -9,15 +9,16 @@
 #ifndef FordBoschTabletApp_Constants_h
 #define FordBoschTabletApp_Constants_h
 
-// participant id:event numbering: counter: message: random stuff
-#define PREFIX_SITUATIONAL_AWARENESS @"Participant#:event#:10:"
-#define PREFIX_TAKE_OVER @"Participant#:event#:20:"
-
 // Log file
 #define LOG_FILE_PATH @"StanfordResearchLog.txt"
 #define LOG_SIMULATOR_MESSAGE @"Simulator Message"
 #define LOG_SIMULATOR_EVENT @"Simulator Event"
 #define LOG_IPAD_EVENT @"Ipad Event"
+#define DEFAULT_PARTICIPANT_ID @"TEST"
+
+// participant id:event numbering: counter: message: random stuff
+#define PREFIX_SITUATIONAL_AWARENESS @"TEST:10:10:"
+#define PREFIX_TAKE_OVER @"TEST:10:20:"
 
 
 #define UDP_HOST_ADDRESS @"127.0.0.1"

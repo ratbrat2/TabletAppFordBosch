@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GCDAsyncUdpSocket.h"
 #import "Constants.h"
+#import "VariableStore.h"
 #import "CustomIOS7AlertView.h"
 
 @interface AppDelegate ()
@@ -131,6 +132,7 @@
 }
 
 // Duplicated in ViewController.m
+/* TODO: cleanup
 - (void)writeToLog:(NSString *)message
 {
     //Get the file path
@@ -160,6 +162,7 @@
     [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
     [file closeFile];
 }
+ */
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock
    didReceiveData:(NSData *)data
@@ -198,7 +201,8 @@ withFilterContext:(id)filterContext
     // Check for Event to see that a new event has been received from simulator
     if ([matchEvent integerValue] != self.lastEventId) {
         // Log
-        [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@", LOG_SIMULATOR_EVENT, matchParticipant, matchEvent]];
+        //[self writeToLog:[NSString stringWithFormat:@"%@,%@,%@", LOG_SIMULATOR_EVENT, matchParticipant, matchEvent]];
+        [VariableStore writeToLog:[NSString stringWithFormat:@"%@,%@,%@", LOG_SIMULATOR_EVENT, matchParticipant, matchEvent] withParticipantId:matchParticipant];
         self.lastEventId = [matchEvent integerValue];
     }
     
@@ -215,7 +219,8 @@ withFilterContext:(id)filterContext
             self.lastEventId = -100;
             self.firstMessageReceived = NO;
             // Log
-            [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,UDP_CLEAR_MESSAGE,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+            //[self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,UDP_CLEAR_MESSAGE,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+            [VariableStore writeToLog:[NSString stringWithFormat:@"%@,%@,%ld,%ld,UDP_CLEAR_MESSAGE,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, (long)self.lastEventId, (long)self.lastSituationalAwarenessIndex, matchMessage] withParticipantId:matchParticipant];
 
         } else {
             //NSLog(@"Regular Situational awareness!");
@@ -232,7 +237,8 @@ withFilterContext:(id)filterContext
 
                 //NSLog(@"Situational awareness presented!!");
                 // Log
-                [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Situational Awareness,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+                //[self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Situational Awareness,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+                [VariableStore writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Situational Awareness,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage] withParticipantId:matchParticipant];
                 
                 [self.storedMessages setValue:matchMessage forKey:matchIndex];
             
@@ -281,7 +287,8 @@ withFilterContext:(id)filterContext
             }
             
             // Log
-            [self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Takeover,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+            //[self writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Takeover,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage]];
+            [VariableStore writeToLog:[NSString stringWithFormat:@"%@,%@,%@,%@,Takeover,%@", LOG_SIMULATOR_MESSAGE, matchParticipant, matchEvent, matchIndex, matchMessage] withParticipantId:matchParticipant];
 
             [self.storedMessages setValue:matchMessage forKey:matchIndex];
         

@@ -11,6 +11,7 @@
 
 #import "CustomIOS7AlertView.h"
 #import "Constants.h"
+#import "VariableStore.h"
 #import <QuartzCore/QuartzCore.h>
 
 const static CGFloat kCustomIOS7AlertViewDefaultButtonHeight       = 50;
@@ -120,6 +121,7 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Ugh - Duplicated in ViewController.m and AppDelegate.m, doing it this way to simplify
+/* TODO: cleanup
 - (void)writeToLog:(NSString *)message
 {
     //Get the file path
@@ -149,6 +151,7 @@ CGFloat buttonSpacerHeight = 0;
     [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
     [file closeFile];
 }
+ */
 
 
 // Button has been touched
@@ -167,7 +170,7 @@ CGFloat buttonSpacerHeight = 0;
 - (void)customIOS7dialogButtonTouchUpInside: (CustomIOS7AlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"Button Clicked! %d, %d", buttonIndex, [alertView tag]);
-    [self writeToLog:[NSString stringWithFormat:@"%@,-1,Closed Takeover Alert", LOG_IPAD_EVENT]];
+    [VariableStore writeToLog:[NSString stringWithFormat:@"%@,-1,Closed Takeover Alert", LOG_IPAD_EVENT]];
     [self close];
 }
 

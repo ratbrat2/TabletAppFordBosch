@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "GCDAsyncUdpSocket.h"
 #import "Constants.h"
+#import "VariableStore.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) NSString *situationalAwarenessMessage;
@@ -29,7 +30,7 @@
                                         repeats:NO];
     }
     // Log entered into view message
-    [self writeToLog:[NSString stringWithFormat:@"%@,-1,Entered %@ View", LOG_IPAD_EVENT, self.title]];
+    [VariableStore writeToLog:[NSString stringWithFormat:@"%@,-1,Entered %@ View", LOG_IPAD_EVENT, self.title]];
 }
 
 - (void)disableBackButton:(NSTimer *)timer
@@ -56,13 +57,14 @@
     [super viewWillDisappear:animated];
     
     // Log exited from view message
-    [self writeToLog:[NSString stringWithFormat:@"%@,-1,Exited %@ View", LOG_IPAD_EVENT, self.title]];
+    [VariableStore writeToLog:[NSString stringWithFormat:@"%@,-1,Exited %@ View", LOG_IPAD_EVENT, self.title]];
 
 }
 
 
 
 // Duplicated in AppDelegate.m
+/* TODO: Cleanup
 - (void)writeToLog:(NSString *)message
 {
     //Get the file path
@@ -92,6 +94,7 @@
     [file writeData:[content dataUsingEncoding:NSUTF8StringEncoding]];
     [file closeFile];
 }
+ */
 
 
 // Debug buttons to send takeover or awareness messages via UDP
