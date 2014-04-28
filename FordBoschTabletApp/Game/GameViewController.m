@@ -45,7 +45,6 @@
     
     // Unload
     if (self.myScene) {
-        NSLog(@"unloadTimer from viewDidDisappear");
         [self.myScene unloadTimer];
     }
 }

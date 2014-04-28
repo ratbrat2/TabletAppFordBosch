@@ -23,7 +23,6 @@
     static VariableStore *sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSLog(@"At dispatch_once!");
         sharedMyManager = [[self alloc] init];
     });
     return sharedMyManager;
@@ -69,7 +68,6 @@
 
 - (id)init {
     if (self = [super init]) {
-        NSLog(@"At Init!");
         _participantId = DEFAULT_PARTICIPANT_ID;  // Default value
         _timestamp = [self getCurrentTimestamp:YES];
     }
@@ -106,7 +104,6 @@
     return [dateFormatter stringFromDate:date];
 }
 
-// TODO: use this
 - (NSString *)getLogfilePath
 {
     NSString *filename = [NSString stringWithFormat:@"%@#%@.txt", self.participantId, self.timestamp];

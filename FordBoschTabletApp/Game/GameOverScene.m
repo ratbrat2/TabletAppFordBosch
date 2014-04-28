@@ -62,7 +62,6 @@
 
 - (void)willMoveFromView:(SKView *)view
 {
-    NSLog(@"GameOverScene: willMoveFromView called!");
     [super willMoveFromView:view];
     if (self.tapGesture) {
         [view removeGestureRecognizer:self.tapGesture];

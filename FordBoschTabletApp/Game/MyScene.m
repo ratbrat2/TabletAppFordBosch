@@ -173,7 +173,6 @@
         self.flubbleOrbitRadius = planet.frame.size.width/2 + self.flubbleNode.frame.size.width/2 + FLUBBLE_PLANET_OFFSET;
         [planet addChild:self.flubbleNode];
         
-        NSLog(@"start timer!");
         self.timer = [NSTimer scheduledTimerWithTimeInterval:3
                                                       target:self
                                                     selector:@selector(addEnemy:)
@@ -186,15 +185,12 @@
 
 - (void)unloadTimer
 {
-    NSLog(@"unloadTimer");
     [self.timer invalidate];
     self.timer = nil;
 }
 
 - (void)addEnemy:(NSTimer *)timer
-{
-    NSLog(@"addEnemy");
-    
+{    
     SKNode *newEnemy = [FlubbleSpawner enemyCircleWithStartingRadius:self.size.width];
     [self.enemies addObject:newEnemy];
     [self addChild:newEnemy];
