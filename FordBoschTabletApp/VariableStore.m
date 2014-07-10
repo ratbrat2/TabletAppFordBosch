@@ -69,7 +69,8 @@
 - (id)init {
     if (self = [super init]) {
         _participantId = DEFAULT_PARTICIPANT_ID;  // Default value
-        _timestamp = [self getCurrentTimestamp:YES];
+        //formatString = @"yyyy.MM.dd#HH.mm.ss.SS";
+        _timestamp = @"0000.00.00#00.00.00.00";
     }
     return self;
 }
